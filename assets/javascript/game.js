@@ -6,19 +6,20 @@ var wins = 0;
 var losses = 0;
 var guessesLeft = 12;
 var alreadyGuessed = [];
-var correctLetters = [];
 var incorrectLetters = [];
 var winningLetters = [];
 var currentWord = "";
-
+var validLetters = [];
+var answerArray = [];
+var wordSplit = [];
 
 //Functions
 function updateWins() {
     document.getElementById("wins").innerHTML = wins;
 }
-//function updateLosses() {
-    //document.getElementById("losses").innerHTML = losses;
-//}
+function updateLosses() {
+    document.getElementById("losses").innerHTML = losses;
+}
 function updateGuessesLeft() {
     document.getElementById("guessesLeft").innerHTML = guessesLeft;
 
@@ -27,10 +28,7 @@ function updateGuessesLeft() {
         resetGlobalVariables();
 }
 }
-//function updateAlreadyGuessed() {
-      //  document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed.push(userGuess);
-      //  document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed;
-//}
+
 //function to store words in winning letter array
 //var uniqurArr = arr.filter(function(item, pos, self) {
   //  return(self.indexOf(item)===-1)
@@ -51,24 +49,45 @@ document.onkeyup = function (event) {
     userGuess = userGuess.toLowerCase();
     userGuess.textContent = event.key;
     console.log(userGuess);
+    console.log(letters.indexOf(userGuess));
+  
     
-    function validLetterCheck() {
+    function updateValidLetters() {
         console.log(letters.indexOf(userGuess));
-        if (letters.indexOf(userGuess) != -1) {
-            document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed.push(userGuess);
-            document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed;
-
+        if (letters.indexOf(userGuess) != -1 && validLetters.indexOf(userGuess) ===-1) {
+            // validLetters.push(userGuess);
+            document.getElementById("validLetters").innerHTML = validLetters.push(userGuess);
+            document.getElementById("validLetters").innerHTML = validLetters;
+            
         }
 
     }
-    //validLetterCheck(); 
-    //updateAlreadyGuessed();
 
+    function updateAlreadyGuessed() {
+        if (letters.indexOf(userGuess) != -1) {
+            document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed.push(userGuess);
+            document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed;
+        }
+    }
+    updateValidLetters(); 
+    updateAlreadyGuessed();
+}
 
     // Randomly chooses a choice from the options array. This is the Computer's guess.
     var currentWord = words[Math.floor(Math.random() * words.length)];
+    console.log("current word: " + currentWord);
+
+
+    wordSplit = currentWord.split("");
+    console.log("word split " + wordSplit);
+    // document.getElementById("currentWord").innerHTML = currentWord.push(validLetter[1]);
+    // document.getElementById("currentWord").innerHTML = currentWord;
 
     for (var i = 0; i < words.length; i++) {
+        currentWord[i] = "_";
+        
+    }
+
         //return words.split('');
         //document.getElementById("currentWord").innerHTML = currentWord.push(words);
         //document.getElementById("currentWord").innerHTML = currentWord;
@@ -84,9 +103,9 @@ document.onkeyup = function (event) {
         console.log('The array has ' + arrayOfStrings.length + ' elements: ' + arrayOfStrings.join(' / '));
 
        
-    }}
+    }
 //splitString();
 
 
 
-}
+
