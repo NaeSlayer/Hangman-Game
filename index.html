@@ -4,20 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Hangman</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
+    <container>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Hangman</h1>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4" "images-div"></div>
+            <div class="col-md-4" "main-game">
+                <h2>Press any key to start!</h2>
+                <p>Wins</p>
+                <p id="wins"></p>
+                <p>Losses</p>
+                <p id="losses"></p>
+                <p>Current word</p>
+                <p id="currentWord"></p>
+                <p>Number of guesses remaining</p>
+                <p id="guessesLeft"></p>
+                <p>Letters already guessed <span id= "alreadyGuessed"></span></p>
+             <!--   <p>Valid Letters <span id = "validLetters"></span></p>   -->
+            </div>
+            <div class="col-md-2"></div>
 
-    <h1>Hangman</h1>
-    <h2>Press any key to start!</h2>
-    <p>Wins</p>
-    <p id="wins"></p>
-    <p>Current word</p>
-    <p id="currentWord"></p>
-    <p>Number of guesses remaining</p>
-    <p id="guessesLeft"></p>
-    <p>Letters already guessed <span id= "alreadyGuessed"></span></p>
-    <p>Valid Letters <span id = "validLetters"></span></p>
+
+        </div>
+    </container>
 
 <script type="text/javascript" src="assets/javascript/game.js"></script>
 

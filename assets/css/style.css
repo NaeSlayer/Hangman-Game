@@ -1,0 +1,20 @@
+container {
+    background: blue;
+}
+.jumbotron {
+    width: 80%;
+    border-radius: 5px;
+    margin: o auto;
+}
+
+.main-content {
+    border-right: 2px, solid, black;
+}
+.images-div {
+    border-right: 2px, solid, black;
+
+}
+h1 {
+    font-weight: bold;
+    text-align: center;
+}
