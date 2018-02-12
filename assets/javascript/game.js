@@ -16,31 +16,43 @@ var wordBlanks = [];
 
 
 //Functions
+//update the wins div on HTML
 function updateWins() {
     document.getElementById("wins").innerHTML = wins;
-    
 }
- function checkForWin(){
-    for (var i =0; i < wordSplit.length; i++) {
+//checks for win and sets up new word, adds 1 win, 
+//code not working -> clears alreadyGuessed array and resets guesses remaining
+//
+function checkForWin(){
+    // for (var i =0; i < wordSplit.length; i++) {
     if (wordBlanks.indexOf("_") === -1) {
-        setupWord();
         wins++;
+        setupWord();
+        alreadyGuessed = [];
+        guessesLeft = 12;
+        updateWins();
+        updateGuessesLeft();
+        updateAlreadyGuessed();
     }
 }
     document.getElementById("wins").innerHTML = wins;
-}
+// }
+//updates the losses div on HTML
 function updateLosses() {
     document.getElementById("losses").innerHTML = losses;
 }
+//updates the guessesLeft div on HTML
+//also
 function updateGuessesLeft() {
     document.getElementById("guessesLeft").innerHTML = guessesLeft;
 
     if (guessesLeft < 1) {
         guessesLeft = 12;
-        
+        alreadyGuessed = [];
         losses++;
         setupWord();
         updateGuessesLeft();
+        // updateAlreadyGuessed();
         
 }
 }
@@ -57,26 +69,25 @@ document.onkeyup = function (event) {
     var userGuess = event.key;
     userGuess = userGuess.toLowerCase();
     
-    
+    //checks to see if userGuess is correct
     if (wordSplit.indexOf(userGuess) >= 0) {
         // userGuess is correct.
         // var letterIndex = wordSplit.indexOf(userGuess);
         var letterIndices = getLetterIndices();
 
+        //uses indices of userguess in wordSplit to replace "_" in wordBlanks
         for (var i = 0; i < letterIndices.length; i++) {
             var letterIndex = letterIndices[i];
             wordBlanks[letterIndex] = userGuess;
             letterIndex;
         }
-
-        
-
         printWord();
     } else {
         // userGuess is incorrect.
         // Decrent guesess.
         // guessesLeft--;
     }
+    //finds indices of userguess in wordSplit and returns them
         function getLetterIndices() {
             var letterIndices = [];
             for (var i = 0; i < wordSplit.length; i++) {
@@ -93,7 +104,7 @@ document.onkeyup = function (event) {
     console.log("userguess: " + userGuess);
     console.log("index of letter guessed " + letters.indexOf(userGuess));
   
-    function updateValidLetters() {
+ /*   function updateValidLetters() {
         // console.log(letters.indexOf(userGuess));
         if (letters.indexOf(userGuess) != -1 && validLetters.indexOf(userGuess) === -1) {
             console.log("index of letter guessed " + letters.indexOf(userGuess));
@@ -106,25 +117,29 @@ document.onkeyup = function (event) {
         }
 
     }
-
+*/
+//checks to make sure userGuess is a letter from letters array and checks to make sure userGuess is not already included in alreadyGuessed array
+//if userGuess is a valid guess and not duplicate -> push guess to alreadyGuessed array, decrent guesses and update guessesLeft on HTML
     function updateAlreadyGuessed() {
         if (letters.indexOf(userGuess) != -1 && alreadyGuessed.indexOf(userGuess) === -1) {
-            guessesLeft--;
+            
             console.log("index of letter guessed " + letters.indexOf(userGuess));
             alreadyGuessed.push(userGuess);
             // document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed.push(userGuess);
             document.getElementById("alreadyGuessed").innerHTML = alreadyGuessed;
+            guessesLeft--;
+            updateGuessesLeft();
             
         }
     };
   
-    updateGuessesLeft();
+    // updateGuessesLeft();
     console.log("guessesLeft " + guessesLeft);
     //  updateValidLetters(); 
-     updateAlreadyGuessed();
+    updateAlreadyGuessed();
     updateWins();
     updateLosses();
-    // checkForWin();
+    checkForWin();
     }
 
 
@@ -137,7 +152,7 @@ function setupWord() {
     // Randomly chooses a choice from the options array. This is the Computer's guess.
     var currentWord = words[Math.floor(Math.random() * words.length)];
     wordBlanks = [];
-    alreadyGuessed = [];
+    // alreadyGuessed = [];
     console.log("current word: " + currentWord);
     wordSplit = currentWord.split("");
     console.log("word split " + wordSplit);
@@ -146,7 +161,9 @@ function setupWord() {
     for (var i = 0; i < wordSplit.length; i++) {
         wordBlanks[i] = "_";
     }
-   printWord();
+   
+    printWord();
+    
    
       
 }
