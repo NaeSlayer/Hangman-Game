@@ -4,23 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Hangman</title>
-  <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">   -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">   
+    <link href="https://fonts.googleapis.com/css?family=Ultra" rel="stylesheet">
 </head>
 
 <body>
-    <container>
-        <div class="jumbotron">
+    <container class="background">
+        <div class="jumbotron" "header">
             <div class="container">
                 <h1>Hangman</h1>
+                <h2>Willy Wonka and the Chocolate Factory</h2>
             </div>
         </div>
     
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-4" "images-div"></div>
+            <div class="col-md-4" "images-div">
+                <img src="assets/images/willywonkamovieposter.jpg">
+            </div>
             <div class="col-md-4" "main-game">
-                <h2>Press any key to start!</h2>
+                <h2>Guess a letter to begin!</h2>
                 <p>Wins</p>
                 <p id="wins"></p>
                 <p>Losses</p>
@@ -29,8 +33,8 @@
                 <p id="currentWord"></p>
                 <p>Number of guesses remaining</p>
                 <p id="guessesLeft"></p>
-                <p>Letters already guessed <span id= "alreadyGuessed"></span></p>
-             <!--   <p>Valid Letters <span id = "validLetters"></span></p>   -->
+                <p>Letters already guessed<br><span id= "alreadyGuessed"></span></p>
+             
             </div>
             <div class="col-md-2"></div>
 
