@@ -7,3 +7,5 @@ Press any letter key to begin.
 Continue guessing letters until either the word is complete or the number of guesses remaining reaches 0. 
 After a win or a loss a new word will load. 
 
+Click here to play: https://naeslayer.github.io/Hangman-Game/
+
